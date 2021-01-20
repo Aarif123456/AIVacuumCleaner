@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace GameBrains.Entities.Agents
 {
+    // Control how agents is moved
     public enum MotorTypes
     {
         None,
@@ -19,6 +20,7 @@ namespace GameBrains.Entities.Agents
         Rigidbody
     };
 
+    // Control how we pick where to move
     public enum TargetTypes
     {
         None,
@@ -28,10 +30,10 @@ namespace GameBrains.Entities.Agents
         Random
     }
 
+    // Control how we handle the current action
     public enum ThinkTypes
     {
         Replace,
-        Add,
         Merge
     }
     
@@ -90,27 +92,29 @@ namespace GameBrains.Entities.Agents
 
         // TODO: Modify to continue or interrupt action currently in progress
         protected List<Action> currentActions = new List<Action>();
+        protected List<Percept> currentPercepts = new List<Percept>();
 
         public override void Awake()
         {
             base.Awake();
-
-            switch (MotorType)
-            {
-                case MotorTypes.CharacterController:
-                    SetupCharacterController();
-                    break;
-                // case MotorTypes.Rigidbody:
-                //     SetupRigidbody();
-                //     break;
-            }
+            SetUpMotorComponents();
+            
         }
 
         public override void Update()
         {
             base.Update ();
+            Sense();
+            Think();
+            Act();
+        }
 
-            List<Percept> currentPercepts = new List<Percept>();
+    /**********************************************************************************************/
+    /* Handle things the agent does */ 
+
+        /*Go through all sensors and get back result from all sensors */
+        protected void Sense(){
+            currentPercepts = new List<Percept>();
 
             foreach (Sensor sensor in Sensors)
             {
@@ -123,61 +127,76 @@ namespace GameBrains.Entities.Agents
                     }
                 }
             }
+            /*if (Memory != null)
+            {
+                Memory.Record(currentPercepts);
+            }*/
+        }
 
-            // if (Memory != null)
-            // {
-            //     Memory.Record(currentPercepts);
-            // }
-
+        protected void Think(){
             if (Mind != null && Mind.MindUpdateRegulator.IsReady)
             {
-                // TODO: Should we deal with inprogress actions or just drop them
-                ChooseThinkType(currentPercepts);
-
-                print("Action count = " + currentActions.Count);
+                // TODO: Should we deal with in-progress actions or just drop them
+                // Actions can either be replaced or somehow merged -we can use memory to control adding 
+                switch (ThinkType)
+                {
+                    case ThinkTypes.Replace:
+                        currentActions = Mind.Think(currentPercepts);
+                        break;
+                    case ThinkTypes.Merge:
+                        MergeActions(Mind.Think(currentPercepts));
+                        break;
+                    default:
+                        Debug.LogWarning("Unsupported ThinkType");
+                        break;
+                }       
             }
-            
-            // if (Memory != null)
-            // {
-            //     Memory.Record(currentActions);
-            // }
-
+            /*if (Memory != null)
+            {
+                Memory.Record(currentActions);
+            }*/
+        }
+        protected void Act(){
             foreach (Actuator actuator in Actuators)
             {
                 if (actuator.ActuatorUpdateRegulator.IsReady)
                 {
                     actuator.Act(currentActions);
-                    //print("Action count = " + currentActions.Count);
-
                     CheckStatus();
                 }
             }
-
-            // if (Memory != null)
-            // {
-            //     Memory.Record(currentActions);
-            // }
+            /*if (Memory != null)
+            {
+                Memory.Record(currentActions);
+            }*/
         }
 
-        protected void ChooseThinkType(List<Percept> currentPercepts)
+        /* If the the think type is set to merge we will try to merge actions */
+        protected virtual void MergeActions(List<Action> newActions)
         {
-            if (ThinkType == ThinkTypes.Replace)
+            foreach (Action action in newActions)
             {
-                currentActions = Mind.Think(currentPercepts);
-            }
-            else if (ThinkType == ThinkTypes.Add)
-            {
-                currentActions.AddRange(Mind.Think(currentPercepts));
-            }
-            else if (ThinkType == ThinkTypes.Merge)
-            {
-                MergeActions(Mind.Think(currentPercepts));
-            }
-            else
-            {
-                Debug.LogWarning("Unsupported ThinkType");
+                bool added = false;
+                for (int i = 0; i < currentActions.Count; i++)
+                {
+                    // TODO: Can we have different actions of the same type??
+                    if (currentActions[i].GetType() == action.GetType())
+                    {
+                        print("Action Interrupted: " + currentActions[i]);
+                        currentActions[i] = action; // replace
+                        added = true;
+                        break;
+                    }
+                }
+
+                if (!added)
+                {
+                    currentActions.Add(action);
+                }
             }
         }
+    /**********************************************************************************************/
+    /* Agent self-awareness */     
 
         protected void CheckStatus()
         {
@@ -209,27 +228,20 @@ namespace GameBrains.Entities.Agents
             }
         }
 
-        protected void MergeActions(List<Action> newActions)
-        {
-            foreach (Action action in newActions)
-            {
-                bool added = false;
-                for (int i = 0; i < currentActions.Count; i++)
-                {
-                    // TODO: Can we have different actions of the same type??
-                    if (currentActions[i].GetType() == action.GetType())
-                    {
-                        print("Action Interrupted: " + currentActions[i]);
-                        currentActions[i] = action; // replace
-                        added = true;
-                        break;
-                    }
-                }
+        
+    /**********************************************************************************************/
+    /* Handle setting up Unity components in code */
 
-                if (!added)
-                {
-                    currentActions.Add(action);
-                }
+        /* Setup components needed to move the agent depending on the selected motor type */
+        protected void SetUpMotorComponents(){
+            switch (MotorType)
+            {
+                case MotorTypes.CharacterController:
+                    SetupCharacterController();
+                    break;
+                case MotorTypes.Rigidbody:
+                    SetupRigidbody();
+                    break;
             }
         }
 
@@ -243,6 +255,7 @@ namespace GameBrains.Entities.Agents
             characterController.center = center;
         }
 
+        // programmatically set up rigid body component 
         protected void SetupRigidbody()
         {
             Rigidbody rb = gameObject.GetComponent<Rigidbody>();
@@ -250,8 +263,8 @@ namespace GameBrains.Entities.Agents
             if (rb == null)
             {
                 rb = gameObject.AddComponent<Rigidbody>();
-                //rb.isKinematic = true;
-                rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                rb.useGravity = false;
+                rb.constraints = RigidbodyConstraints.FreezeRotationX |RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             }
         
             CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();

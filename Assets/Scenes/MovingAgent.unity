@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 20354172}
   - component: {fileID: 20354176}
   - component: {fileID: 20354175}
-  - component: {fileID: 20354173}
   m_Layer: 0
   m_Name: Weeble
   m_TagString: Untagged
@@ -161,22 +160,6 @@ Transform:
   m_Father: {fileID: 1175947806}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &20354173
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 20354171}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!23 &20354175
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -303,7 +286,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241698118}
   m_LocalRotation: {x: -0.048298847, y: 0.94822574, z: -0.17636941, w: -0.25967097}
-  m_LocalPosition: {x: 7.908451, y: 6.950471, z: 13.457991}
+  m_LocalPosition: {x: 7.908451, y: 6.950471, z: 31.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 584690693}
@@ -549,6 +532,7 @@ GameObject:
   - component: {fileID: 3444096725015504874}
   - component: {fileID: 4397678876825699148}
   - component: {fileID: 3485301429501897379}
+  - component: {fileID: 1436070022}
   m_Layer: 0
   m_Name: Actuators
   m_TagString: Untagged
@@ -570,6 +554,51 @@ Transform:
   m_Father: {fileID: 1875813613}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1436070022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436070020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc272f4411939b469c7c9a03cd1ed34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  minimumTimeMs: 0
+  maximumDelayMs: 0
+  mode: 2
+  regulatorDistribution: 0
+  distributionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minimumSatisfactionRadius: 0.5
+  maxForce: 5
+  forceMultiplier: 0.1
+  rb: {fileID: 0}
 --- !u!1 &1554502822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,9 +1156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9bedead86d3594da7ac0a7d08b7516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorType: 2
+  motorType: 3
   targetType: 4
-  thinkTypes: 2
+  thinkTypes: 0
   performanceMeasure: {fileID: 0}
   sensors: []
   mind: {fileID: 0}
@@ -1338,10 +1367,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 13795258091310202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14547e2c5cbd54e46b1cffb10236ce3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
+  dirtAccumulationRate: 230
+  dirtAccumulationVariance: 0
+  currentDirt: 0
+  maxDirtLevel: 6000
+  resistanceRate: 0
+  tileMaterial: {fileID: 0}
 --- !u!1 &217088233182160591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,10 +1406,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 217088233182160591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14547e2c5cbd54e46b1cffb10236ce3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
+  dirtAccumulationRate: 40
+  dirtAccumulationVariance: 1
+  currentDirt: 0
+  maxDirtLevel: 1400
+  resistanceRate: 0
+  tileMaterial: {fileID: 0}
 --- !u!1 &217088233760565603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,10 +1445,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 217088233760565603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14547e2c5cbd54e46b1cffb10236ce3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
+  dirtAccumulationRate: 2
+  dirtAccumulationVariance: 1
+  currentDirt: 0
+  maxDirtLevel: 2000
+  resistanceRate: 0
+  tileMaterial: {fileID: 0}
 --- !u!1 &217088234238642466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1437,10 +1484,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 217088234238642466}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14547e2c5cbd54e46b1cffb10236ce3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
+  dirtAccumulationRate: 50
+  dirtAccumulationVariance: 1
+  currentDirt: 0
+  maxDirtLevel: 10000
+  resistanceRate: 0
+  tileMaterial: {fileID: 0}
 --- !u!1 &217088234839730194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,10 +1523,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 217088234839730194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14547e2c5cbd54e46b1cffb10236ce3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
+  dirtAccumulationRate: 5
+  dirtAccumulationVariance: 0
+  currentDirt: 0
+  maxDirtLevel: 100
+  resistanceRate: 0
+  tileMaterial: {fileID: 0}
 --- !u!114 &288893203529647393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1906,7 +1965,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13795258091310202}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

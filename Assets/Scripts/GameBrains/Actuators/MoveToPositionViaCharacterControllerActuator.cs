@@ -21,8 +21,7 @@ namespace GameBrains.Actuators
             
             base.Start();
             
-            // The CharacterController component should be attached to the same
-            // gameObject as the Agent component.
+            // The CharacterController component should be attached to the same gameObject as the Agent component.
             if (characterController == null) 
             {
                 characterController = Agent.GetComponent<CharacterController>();

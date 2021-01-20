@@ -1,4 +1,4 @@
-dddnamespace GameBrains.Entities
+namespace GameBrains.Entities
 {
     public class TargetEntity : Entity
     {
@@ -8,7 +8,7 @@ dddnamespace GameBrains.Entities
         {
             base.Update();
 
-            // TODO: could vary value over time, etc.
+            // TODO: could vary value over time, etc.- we can assign based on different factors in 
         }
     }
 }

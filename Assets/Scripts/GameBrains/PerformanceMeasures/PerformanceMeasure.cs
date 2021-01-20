@@ -20,5 +20,6 @@ namespace GameBrains.PerformanceMeasures
         }
 
         // TODO: Measure Performance
+        /*TODO: Measure dirt collected, energy used, */
     }
 }

@@ -56,6 +56,7 @@ namespace GameBrains.Actuators
 
         public virtual void Act(Action action)
         {
+            Debug.LogWarning("WARNING: Using act method from base actuator class" );
         }
     }
 }
