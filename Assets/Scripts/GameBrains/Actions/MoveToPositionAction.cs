@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-// TODO deprecate in favor add force
+
 namespace GameBrains.Actions
 {
     public class MoveToPositionAction : Action

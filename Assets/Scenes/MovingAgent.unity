@@ -285,13 +285,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241698118}
-  m_LocalRotation: {x: -0.048298847, y: 0.94822574, z: -0.17636941, w: -0.25967097}
-  m_LocalPosition: {x: 7.908451, y: 6.950471, z: 31.62}
+  m_LocalRotation: {x: 0.12520888, y: -0.7233937, z: 0.13616364, w: 0.6651946}
+  m_LocalPosition: {x: 21.76, y: 9.9, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 584690693}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.32, y: -94.8, z: 0}
 --- !u!1 &584690692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,8 +1371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  dirtAccumulationRate: 230
-  dirtAccumulationVariance: 0
+  dirtAccumulationRate: 30
+  dirtAccumulationVariance: 1
   currentDirt: 0
   maxDirtLevel: 6000
   resistanceRate: 0
@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  dirtAccumulationRate: 40
+  dirtAccumulationRate: 15
   dirtAccumulationVariance: 1
   currentDirt: 0
   maxDirtLevel: 1400
@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 0
   dirtAccumulationRate: 50
-  dirtAccumulationVariance: 1
+  dirtAccumulationVariance: 0
   currentDirt: 0
   maxDirtLevel: 10000
   resistanceRate: 0
