@@ -263,8 +263,10 @@ namespace GameBrains.Entities.Agents
             if (rb == null)
             {
                 rb = gameObject.AddComponent<Rigidbody>();
-                rb.useGravity = false;
+                rb.useGravity = true;
                 rb.constraints = RigidbodyConstraints.FreezeRotationX |RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+                rb.mass=100;
+                rb.drag = 1.5f;
             }
         
             CapsuleCollider collider = gameObject.GetComponent<CapsuleCollider>();

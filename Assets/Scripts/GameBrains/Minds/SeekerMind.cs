@@ -12,7 +12,7 @@ namespace GameBrains.Minds
         // TODO: Make parameters settable through Mind decisions??
         
         // How close is close enough?
-        [SerializeField] protected float desiredSatisfactionRadius = 0f; // TODO: Should depend on Agent radius??
+        [SerializeField] protected float desiredSatisfactionRadius = 0f; 
         // How fast should we move?
         [SerializeField] protected float desiredSpeed = 100f; // TODO: Should depend on Actuator capabilities??
         [SerializeField] protected float moveTimeToLive = 5f;
@@ -53,8 +53,9 @@ namespace GameBrains.Minds
             *   and z axis. It might make sense to have a separate radius for the x and z
             * instead of combining them...
             */
-            desiredSatisfactionRadius = Mathf.Max(bounds.extents.x * agentObjectTransform.x ,
+            desiredSatisfactionRadius = Mathf.Max(bounds.extents.x * agentObjectTransform.x,
                                                     bounds.extents.z * agentObjectTransform.z);
+
         }
 
         /* Bot chooses target depending on mode and then goes to the target */
@@ -105,7 +106,7 @@ namespace GameBrains.Minds
         {
             switch (Agent.TargetType)
             {
-                // TODO: prioritize targets
+                // TODO: prioritize targets - for value base on measure
                 case TargetTypes.None:
                     return Agent.transform.position;
                 case TargetTypes.First:
@@ -113,8 +114,7 @@ namespace GameBrains.Minds
                 case TargetTypes.Closest:
                     return ChooseClosestTargetPosition(percepts);
                 case TargetTypes.Valued:
-                    Debug.LogWarning("TargetType.Valued is not implemented. Defaulting to Random.");
-                    return ChooseRandomTargetPosition(percepts);
+                    return ChooseValuedTargetPosition(percepts);
                 default:
                     return ChooseRandomTargetPosition(percepts);
             }
@@ -190,6 +190,58 @@ namespace GameBrains.Minds
             if (closestIndex != -1)
             {
                 return targetPositions[closestIndex];
+            }
+
+            return Agent.transform.position; // no target
+        }
+
+        /* TODO: figure out how the bot should select a a valuable target */
+        /* Currently the most dirty is the most valuable */
+        protected Vector3 ChooseValuedTargetPosition(IEnumerable<Percept> percepts)
+        {
+            Debug.Log("Getting valuable target");
+            var targetValues = new List<float>();
+            List<Vector3> targetPositions = new List<Vector3>();
+
+            foreach (Percept percept in percepts)
+            {
+                if (percept is CleanPercept cleanPercept
+                    && cleanPercept.Cleanable)
+                {
+                    targetValues.Add(cleanPercept.DirtInArea);
+                }
+                if (percept is PositionPercept positionPercept
+                    && positionPercept.Position.HasValue)
+                {
+                    targetPositions.Add(positionPercept.Position.Value);
+                }
+            }
+
+            /* TODO: determine if this is a valid assumption - does this create unnecessary 
+            * coupling?? what can you do to make sure we can target tiles that are more dirty
+            * should we try to combine percepts? 
+            */
+            if(targetValues.Count != targetPositions.Count){
+                Debug.LogWarning("Number of cleanable location do not match tiles in sensor");
+                return Agent.transform.position; // no target
+            }
+            int valueIndex = -1;
+            float tileValue = float.NegativeInfinity;
+
+            for (int i = 0; i < targetPositions.Count; i++)
+            {
+
+                if (targetValues[i] > tileValue)
+                {
+                    tileValue = targetValues[i];
+                    valueIndex = i;
+                }
+            }
+            Debug.Log("index chosen" + valueIndex );
+            Debug.Log("targetPos" + targetPositions[valueIndex] );
+            if (valueIndex != -1)
+            {
+                return targetPositions[valueIndex];
             }
 
             return Agent.transform.position; // no target
