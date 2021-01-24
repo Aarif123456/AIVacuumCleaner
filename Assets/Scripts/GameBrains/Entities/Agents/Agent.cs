@@ -74,6 +74,7 @@ namespace GameBrains.Entities.Agents
         }
 
         [SerializeField] protected List<Actuator> actuators = new List<Actuator>();
+
         // TODO: Make protected and add public accessors
         public virtual List<Actuator> Actuators
         {
@@ -137,7 +138,7 @@ namespace GameBrains.Entities.Agents
             if (Mind != null && Mind.MindUpdateRegulator.IsReady)
             {
                 // TODO: Should we deal with in-progress actions or just drop them
-                // Actions can either be replaced or somehow merged -we can use memory to control adding 
+                // Actions can either be replaced or somehow merged - we can use memory to control adding 
                 switch (ThinkType)
                 {
                     case ThinkTypes.Replace:
@@ -248,7 +249,6 @@ namespace GameBrains.Entities.Agents
         protected void SetupCharacterController()
         {
             if (gameObject.GetComponent<CharacterController>() != null) return;
-
             var characterController = gameObject.AddComponent<CharacterController>();
             Vector3 center = characterController.center;
             center.y = 1; // Agent's pivot is at 0, not its center

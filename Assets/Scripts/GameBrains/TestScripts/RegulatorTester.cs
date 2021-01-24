@@ -9,8 +9,7 @@ namespace GameBrains.TestScripts
         public float maximumDelayMs;
         public RegulatorMode mode;
         public RegulatorDistribution regulatorDistribution;
-        public AnimationCurve distributionCurve 
-            = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+        public AnimationCurve distributionCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
 
         float timeSinceLastReady = 0;
 

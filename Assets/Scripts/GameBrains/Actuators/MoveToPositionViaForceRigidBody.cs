@@ -6,7 +6,6 @@ namespace GameBrains.Actuators
 {
     public class MoveToPositionViaForceRigidBody : Actuator
     {
-        
         // Represents a limitations of the actuator
         [SerializeField] protected float minimumSatisfactionRadius = 0.5f;
         [SerializeField] protected float maxForce = 5f;
@@ -45,18 +44,23 @@ namespace GameBrains.Actuators
                     moveToPositionAction.completionStatus = CompletionsStates.Complete;
                 }
                 else{
-                    // go toward the desired position
+                    /*go toward the desired position*/
                     Vector3 desiredDirection = (desiredPosition - agentTransformPosition).normalized;
-                    // try to reach desired speed 
+
+                    /*try to reach desired speed */
                     Vector3 desiredVelocity = desiredDirection * moveToPositionAction.desiredSpeed;
-                    // calculate force based on our current velocity an desired velocity and our force multiplier
-                    
+
+                    /*calculate force based on our current velocity an desired velocity and our 
+                    force multiplier */
                     Vector3 force = (desiredVelocity - rb.velocity) * forceMultiplier;
-                    // If we reach maximum thrust cap the acceleration 
+
+                    /*If we reach maximum thrust cap the acceleration */
                     if (force.magnitude > maxForce)
                     {
                         force = force.normalized * maxForce;
                     }
+
+                    /* Add force to rigid-body */
                     rb.AddForce(force);
                     if (Vector3.Distance(agentTransformPosition,desiredPosition) <= satisfactionRadius) 
                     {
