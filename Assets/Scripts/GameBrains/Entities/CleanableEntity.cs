@@ -33,14 +33,13 @@ namespace GameBrains.Entities
             this.gameObject.GetComponent<MeshRenderer>().enabled = true;
             maxDirtLevel = Mathf.Max(maxDirtLevel, 1);
         }
+        
         public override void Update()
         {
             base.Update();
-            
             float maxDirtIncrease = dirtAccumulationRate*Time.deltaTime;
             currentDirt += Random.Range(maxDirtIncrease*dirtAccumulationVariance, maxDirtIncrease);
             currentDirt = Mathf.Min(maxDirtLevel, currentDirt);
-            // TODO: implement the logic for the dirt accumulation - maybe used FixedUpdate
             SetAreaColor();
         }
 
@@ -59,7 +58,8 @@ namespace GameBrains.Entities
                 Debug.LogWarning("Warning: unable to find material on tile... Color cannot be set");
             }
         }
-        // clean the are and get a certain amount of dirt 
+
+        /* clean the are and get a certain amount of dirt */
         public void CleanArea(float dirtCleaned){
             currentDirt-=dirtCleaned;
         }
@@ -67,6 +67,10 @@ namespace GameBrains.Entities
         /* Return amount of dirt based on percentage passed in the resistance of the area */
         public float GetTotalDirtByPercentage(float percentage){
             return Mathf.Max(0, currentDirt * (percentage-resistanceRate));
+        }
+
+        public float GetTotalDirt(){
+            return currentDirt;
         }
     }
 }

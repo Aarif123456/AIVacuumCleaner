@@ -15,6 +15,7 @@ namespace GameBrains.Sensors
         [SerializeField] protected RegulatorMode mode;
         [SerializeField] protected RegulatorDistribution regulatorDistribution;
         [SerializeField] protected AnimationCurve distributionCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+
         
         protected Regulator sensorUpdateRegulator;
         public Regulator SensorUpdateRegulator => sensorUpdateRegulator;
@@ -30,6 +31,14 @@ namespace GameBrains.Sensors
             }
         }
         
+        public virtual void AddGameObject(GameObject g)
+        {
+            Debug.LogWarning("Using Add GameObject method from base sensor class");
+        }
+
+        public virtual void SetRegulatorMode(RegulatorMode m ){
+            this.mode = m;
+        }
         public virtual void Start()
         {
             sensorUpdateRegulator ??= new Regulator
