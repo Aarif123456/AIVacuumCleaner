@@ -340,6 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 798395660}
   - component: {fileID: 798395661}
+  - component: {fileID: 798395662}
   m_Layer: 0
   m_Name: Mind
   m_TagString: Untagged
@@ -368,7 +369,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798395659}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 58fc1621ac0ca614fa50c3ce891b8995, type: 3}
   m_Name: 
@@ -408,6 +409,55 @@ MonoBehaviour:
   desiredSatisfactionAngle: 2
   desiredAngularSpeed: 1
   turnTimeToLive: 5
+--- !u!114 &798395662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798395659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d964da050b0e6c94c9baea2da67b470a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  minimumTimeMs: 2000
+  maximumDelayMs: 0
+  mode: 2
+  regulatorDistribution: 0
+  distributionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  desiredSatisfactionRadius: 0
+  desiredSpeed: 10
+  moveTimeToLive: 5
+  desiredSatisfactionAngle: 2
+  desiredAngularSpeed: 1
+  turnTimeToLive: 5
+  desiredCleaningEfficiency: 1
+  desiredCleanliness: 0.1
 --- !u!1 &1175947805
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +583,7 @@ GameObject:
   - component: {fileID: 4397678876825699148}
   - component: {fileID: 3485301429501897379}
   - component: {fileID: 1436070022}
+  - component: {fileID: 1436070023}
   m_Layer: 0
   m_Name: Actuators
   m_TagString: Untagged
@@ -569,7 +620,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   minimumTimeMs: 0
   maximumDelayMs: 0
-  mode: 2
+  mode: 1
   regulatorDistribution: 0
   distributionCurve:
     serializedVersion: 2
@@ -596,9 +647,56 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   minimumSatisfactionRadius: 0.5
-  maxForce: 5
-  forceMultiplier: 0.1
+  maxForce: 50000
+  forceMultiplier: 200
   rb: {fileID: 0}
+--- !u!114 &1436070023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436070020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b999c1ab70088f94680aef64e01bdfa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 0}
+  minimumTimeMs: 0
+  maximumDelayMs: 0
+  mode: 1
+  regulatorDistribution: 0
+  distributionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  baseSuctionEfficiency: 0.25
+  maxSuctionEfficiency: 0.4
+  baseSuctionEnergyConsumption: 100
+  maxSuctionEnergyConsumption: 200
+  maxDirtPerSecond: 220
+  layerMask: -257
 --- !u!1 &1554502822
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,7 +1023,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875813612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: -8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 798395660}
@@ -950,8 +1048,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motorType: 3
-  targetType: 4
-  thinkTypes: 0
+  targetType: 3
+  thinkTypes: 1
   performanceMeasure: {fileID: 0}
   sensors: []
   mind: {fileID: 0}
@@ -1167,11 +1265,8 @@ MonoBehaviour:
   dirtAccumulationRate: 30
   dirtAccumulationVariance: 1
   currentDirt: 0
-  maxDirtLevel: 6000
+  maxDirtLevel: 5000
   resistanceRate: 0
-  xEdge: 0
-  yEdge: 0
-  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!1 &217088233182160591
 GameObject:
@@ -1209,11 +1304,8 @@ MonoBehaviour:
   dirtAccumulationRate: 15
   dirtAccumulationVariance: 1
   currentDirt: 0
-  maxDirtLevel: 1400
+  maxDirtLevel: 5000
   resistanceRate: 0
-  xEdge: 0
-  yEdge: 0
-  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!1 &217088233760565603
 GameObject:
@@ -1251,11 +1343,8 @@ MonoBehaviour:
   dirtAccumulationRate: 2
   dirtAccumulationVariance: 1
   currentDirt: 0
-  maxDirtLevel: 2000
+  maxDirtLevel: 5000
   resistanceRate: 0
-  xEdge: 0
-  yEdge: 0
-  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!1 &217088234238642466
 GameObject:
@@ -1293,11 +1382,8 @@ MonoBehaviour:
   dirtAccumulationRate: 50
   dirtAccumulationVariance: 0
   currentDirt: 0
-  maxDirtLevel: 10000
+  maxDirtLevel: 5000
   resistanceRate: 0
-  xEdge: 0
-  yEdge: 0
-  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!1 &217088234839730194
 GameObject:
@@ -1335,11 +1421,8 @@ MonoBehaviour:
   dirtAccumulationRate: 5
   dirtAccumulationVariance: 0
   currentDirt: 0
-  maxDirtLevel: 100
+  maxDirtLevel: 5000
   resistanceRate: 0
-  xEdge: 0
-  yEdge: 0
-  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!114 &288893203529647393
 MonoBehaviour:
@@ -1407,7 +1490,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13795258091310202}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1420,7 +1503,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217088234238642466}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1433,7 +1516,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217088234839730194}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1446,7 +1529,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217088233182160591}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1459,7 +1542,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217088233760565603}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1704,6 +1787,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
+  dirtSucked: 0
+  energyUsed: 0
 --- !u!1 &5346450847767350007
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,9 @@ namespace GameBrains.Sensors
         [SerializeField] CleanableEntity cleanableEntity;
         [SerializeField] Transform targetTransform;
         
+        /* NOTE: If we want to make the sensor more accurate we could factor in the Agent's 
+        * actuator's capability. But, this would increase the coupling between sensor and actuator
+        */
         public override void AddGameObject(GameObject g)
         {
             cleanableEntity = g.GetComponent<CleanableEntity>();
@@ -29,7 +32,7 @@ namespace GameBrains.Sensors
                 cleanPercept.DirtInArea = cleanableEntity.GetTotalDirt();
             }
 
-            return cleanPercept;
+            return cleanPercept; 
         }
     }
 }

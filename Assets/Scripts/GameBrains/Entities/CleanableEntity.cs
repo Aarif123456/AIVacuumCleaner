@@ -59,14 +59,11 @@ namespace GameBrains.Entities
             }
         }
 
-        /* clean the are and get a certain amount of dirt */
-        public void CleanArea(float dirtCleaned){
+        /* clean the area and get the amount of dirt cleaned */
+        public float CleanArea(float percentage, float maxDirtSucked){
+            float dirtCleaned = Mathf.Min( maxDirtSucked, Mathf.Max(0, currentDirt * (percentage-resistanceRate)));
             currentDirt-=dirtCleaned;
-        }
-
-        /* Return amount of dirt based on percentage passed in the resistance of the area */
-        public float GetTotalDirtByPercentage(float percentage){
-            return Mathf.Max(0, currentDirt * (percentage-resistanceRate));
+            return dirtCleaned;
         }
 
         public float GetTotalDirt(){
