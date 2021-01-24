@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 20354175}
   m_Layer: 0
   m_Name: Weeble
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -866,11 +866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1796943298}
-  - component: {fileID: 1796943303}
-  - component: {fileID: 1796943302}
-  - component: {fileID: 1796943301}
-  - component: {fileID: 1796943300}
-  - component: {fileID: 1796943299}
+  - component: {fileID: 1796943304}
   m_Layer: 0
   m_Name: Sensors
   m_TagString: Untagged
@@ -892,7 +888,7 @@ Transform:
   m_Father: {fileID: 1875813613}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1796943299
+--- !u!114 &1796943304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -901,212 +897,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1796943297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb230fef12dd3b4793f07c28f0fcc88, type: 3}
+  m_Script: {fileID: 11500000, guid: 87cc401eb1d569248b009aad5bee79f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  minimumTimeMs: 0
-  maximumDelayMs: 0
-  mode: 1
-  regulatorDistribution: 0
-  distributionCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  sensorRange: 20
-  targetTransform: {fileID: 8796773572731483417}
---- !u!114 &1796943300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796943297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb230fef12dd3b4793f07c28f0fcc88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  minimumTimeMs: 0
-  maximumDelayMs: 0
-  mode: 1
-  regulatorDistribution: 0
-  distributionCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  sensorRange: 20
-  targetTransform: {fileID: 8796773573822733044}
---- !u!114 &1796943301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796943297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb230fef12dd3b4793f07c28f0fcc88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  minimumTimeMs: 0
-  maximumDelayMs: 0
-  mode: 1
-  regulatorDistribution: 0
-  distributionCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  sensorRange: 20
-  targetTransform: {fileID: 8796773574686086488}
---- !u!114 &1796943302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796943297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb230fef12dd3b4793f07c28f0fcc88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  minimumTimeMs: 0
-  maximumDelayMs: 0
-  mode: 1
-  regulatorDistribution: 0
-  distributionCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  sensorRange: 20
-  targetTransform: {fileID: 8796773573601252393}
---- !u!114 &1796943303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796943297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb230fef12dd3b4793f07c28f0fcc88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  minimumTimeMs: 0
-  maximumDelayMs: 0
-  mode: 1
-  regulatorDistribution: 0
-  distributionCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  sensorRange: 20
-  targetTransform: {fileID: 8729709847032639553}
 --- !u!1 &1875813612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,7 +1146,7 @@ GameObject:
   - component: {fileID: 13795258091310203}
   m_Layer: 0
   m_Name: Position1
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1376,6 +1169,9 @@ MonoBehaviour:
   currentDirt: 0
   maxDirtLevel: 6000
   resistanceRate: 0
+  xEdge: 0
+  yEdge: 0
+  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!1 &217088233182160591
 GameObject:
@@ -1392,7 +1188,7 @@ GameObject:
   - component: {fileID: 217088233182160592}
   m_Layer: 0
   m_Name: Position4
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1415,6 +1211,9 @@ MonoBehaviour:
   currentDirt: 0
   maxDirtLevel: 1400
   resistanceRate: 0
+  xEdge: 0
+  yEdge: 0
+  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!1 &217088233760565603
 GameObject:
@@ -1431,7 +1230,7 @@ GameObject:
   - component: {fileID: 217088233760565604}
   m_Layer: 0
   m_Name: Position3
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1454,6 +1253,9 @@ MonoBehaviour:
   currentDirt: 0
   maxDirtLevel: 2000
   resistanceRate: 0
+  xEdge: 0
+  yEdge: 0
+  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!1 &217088234238642466
 GameObject:
@@ -1470,7 +1272,7 @@ GameObject:
   - component: {fileID: 217088234238642467}
   m_Layer: 0
   m_Name: Position5
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1493,6 +1295,9 @@ MonoBehaviour:
   currentDirt: 0
   maxDirtLevel: 10000
   resistanceRate: 0
+  xEdge: 0
+  yEdge: 0
+  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!1 &217088234839730194
 GameObject:
@@ -1509,7 +1314,7 @@ GameObject:
   - component: {fileID: 217088234839730195}
   m_Layer: 0
   m_Name: Position2
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1532,6 +1337,9 @@ MonoBehaviour:
   currentDirt: 0
   maxDirtLevel: 100
   resistanceRate: 0
+  xEdge: 0
+  yEdge: 0
+  zEdge: 0
   tileMaterial: {fileID: 0}
 --- !u!114 &288893203529647393
 MonoBehaviour:
