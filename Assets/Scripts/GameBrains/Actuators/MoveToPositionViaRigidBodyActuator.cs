@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameBrains.Actuators
 {
-    public class MoveToPositionViaForceRigidBody : Actuator
+    public class MoveToPositionViaRigidBodyActuator : Actuator
     {
         // Represents a limitations of the actuator
         [SerializeField] protected float minimumSatisfactionRadius = 0.5f;
