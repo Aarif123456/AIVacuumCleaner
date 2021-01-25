@@ -13,12 +13,12 @@ namespace GameBrains.Minds
         
         // How close is close enough?
         [SerializeField] protected float desiredSatisfactionRadius = 0f; 
-        // How fast should we move?
-        [SerializeField] protected float desiredSpeed = 100f; // TODO: Should depend on Actuator capabilities??
+        // How fast should we want move? NOTE: actual speed is dependent on actuator 
+        [SerializeField] protected float desiredSpeed = 100f; 
         [SerializeField] protected float moveTimeToLive = 5f;
-
-        [SerializeField] protected float desiredSatisfactionAngle = 2; // TODO: Should depend on Actuator capabilities??
-        [SerializeField] protected float desiredAngularSpeed = 1f; // TODO: Should depend on Actuator capabilities??
+        // NOTE: actual precision is dependent on actuator capability 
+        [SerializeField] protected float desiredSatisfactionAngle = 2; 
+        [SerializeField] protected float desiredAngularSpeed = 1f; 
         [SerializeField] protected float turnTimeToLive = 5f;
         
         /* We want to get the scale of the object relative to the world - but unity only gives
@@ -26,19 +26,21 @@ namespace GameBrains.Minds
         * solution from: https://forum.unity.com/threads/world-scale.2270/
         */
         protected Vector3 GetWorldScale(Transform transform)
+        {
+            Vector3 worldScale = transform.localScale;
+            Transform parent = transform.parent;
+           
+            while (parent != null)
             {
-                Vector3 worldScale = transform.localScale;
-                Transform parent = transform.parent;
-               
-                while (parent != null)
-                {
-                    worldScale = Vector3.Scale(worldScale,parent.localScale);
-                    parent = parent.parent;
-                }
-               
-                return worldScale;
+                worldScale = Vector3.Scale(worldScale,parent.localScale);
+                parent = parent.parent;
             }
-        protected override void Awake(){
+           
+            return worldScale;
+        }
+
+        protected override void Awake()
+        {
             base.Awake();
             /* NOTE: we are using tags to avoid manually setting up the script
             *   However, this makes it so the objects must be tagged correctly 
@@ -199,7 +201,6 @@ namespace GameBrains.Minds
         /* Currently the most dirty is the most valuable */
         protected Vector3 ChooseValuedTargetPosition(IEnumerable<Percept> percepts)
         {
-            Debug.Log("Getting valuable target");
             var targetValues = new List<float>();
             List<Vector3> targetPositions = new List<Vector3>();
 
@@ -237,8 +238,8 @@ namespace GameBrains.Minds
                     valueIndex = i;
                 }
             }
-            Debug.Log("index chosen" + valueIndex );
-            Debug.Log("targetPos" + targetPositions[valueIndex] );
+            
+            Debug.Log("valuable targetPos" + targetPositions[valueIndex] );
             if (valueIndex != -1)
             {
                 return targetPositions[valueIndex];

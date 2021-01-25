@@ -3,9 +3,7 @@ using GameBrains.Actions;
 using GameBrains.Entities.Agents;
 using GameBrains.Percepts;
 using UnityEngine;
-/*  
-    TODO: Failed actions? Handled by sensor or mind or ??
-*/
+
 namespace GameBrains.Minds
 {
     public class SimpleReflexMind : SeekerMind
@@ -33,11 +31,10 @@ namespace GameBrains.Minds
                         cleaningEfficiency = this.desiredCleaningEfficiency,
                         desiredCleanliness = this.desiredCleanliness,
                         completionStatus = CompletionsStates.InProgress,
-                        timeToLive = moveTimeToLive*10
+                        timeToLive = moveTimeToLive*1000
                     };
                 actions.Add(cleanAction);
             }
-
             return actions;
         }
 

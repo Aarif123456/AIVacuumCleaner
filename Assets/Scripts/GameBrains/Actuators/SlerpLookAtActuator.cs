@@ -5,8 +5,9 @@ namespace GameBrains.Actuators
 {
     public class SlerpLookAtActuator : Actuator
     {
-        [SerializeField] protected float maximumAngularSpeed = 5f; // Represents a limitation of the actuator
-        [SerializeField] protected float minimumSatisfactionAngle = 1f; // Represents a limitation of the actuator
+        // Represents limitations of the actuator
+        [SerializeField] protected float maximumAngularSpeed = 5f; 
+        [SerializeField] protected float minimumSatisfactionAngle = 1f; 
 
         public override void Act(Action action)
         {

@@ -1,11 +1,11 @@
-
+using System;
 using UnityEngine;
 namespace GameBrains.Entities
 {
     public class CleanableEntity : TargetEntity
     {
 
-        public static readonly  Color DIRT_COLOR = new Vector4(0.745f, 0.494f, 0.243f);
+        public static readonly Color DIRT_COLOR = new Vector4(0.745f, 0.494f, 0.243f);
         // The max speed at which the location gets dirty per second
         public float dirtAccumulationRate=20.0f; 
         /* A value from 0.0-1.0 that represent the how consistent that accumulation of dirt 
@@ -15,7 +15,8 @@ namespace GameBrains.Entities
         */
         public float dirtAccumulationVariance=1.0f; 
         // how much the dirt the current location has
-        public volatile float currentDirt=0;
+        public float currentDirt=0;
+        public volatile float dirtToClean=0;
         // The maximum amount of dirt the area can accumulate
         public int maxDirtLevel=2147483647;
         /* How hard the location is to clean where 1 means it cannot be clean and 0 means that 
@@ -38,9 +39,13 @@ namespace GameBrains.Entities
         {
             base.Update();
             float maxDirtIncrease = dirtAccumulationRate*Time.deltaTime;
-            currentDirt += Random.Range(maxDirtIncrease*dirtAccumulationVariance, maxDirtIncrease);
+            currentDirt += UnityEngine.Random.Range(maxDirtIncrease*dirtAccumulationVariance, maxDirtIncrease);
             currentDirt = Mathf.Min(maxDirtLevel, currentDirt);
             SetAreaColor();
+            if(dirtToClean != 0f){
+                currentDirt-=dirtToClean;
+                dirtToClean = 0f;
+            }
         }
 
         public void SetAreaColor(){
@@ -60,10 +65,10 @@ namespace GameBrains.Entities
         }
 
         /* clean the area and get the amount of dirt cleaned */
-       public float CleanArea(float percentage, float maxDirtSucked, float minDirtSucked){
-            float dirtCleaned = Mathf.Min( maxDirtSucked, Mathf.Max(minDirtSucked, currentDirt * (percentage-resistanceRate))) ;
-            currentDirt-=dirtCleaned;
-            return dirtCleaned;
+        public float CleanArea(float percentage, float maxDirtSucked, float minDirtSucked){
+            System.Threading.SpinWait.SpinUntil( () => dirtToClean==0f );
+            dirtToClean = Mathf.Min( maxDirtSucked, Mathf.Max(minDirtSucked, currentDirt * (percentage-resistanceRate)));
+            return dirtToClean;
         }
 
         public float GetTotalDirt(){
