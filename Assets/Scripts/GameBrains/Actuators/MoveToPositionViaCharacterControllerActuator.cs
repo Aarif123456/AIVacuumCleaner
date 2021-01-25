@@ -34,8 +34,7 @@ namespace GameBrains.Actuators
             {
                 Transform agentTransform = Agent.transform;
                 Vector3 agentTransformPosition = agentTransform.position;
-                float satisfactionRadius 
-                    = Mathf.Max(moveToPositionAction.desiredSatisfactionRadius, minimumSatisfactionRadius);
+                float satisfactionRadius = minimumSatisfactionRadius;
                 float speed = Mathf.Min(moveToPositionAction.desiredSpeed, maximumSpeed);
 
                 Vector3 desiredPosition = moveToPositionAction.desiredPosition;

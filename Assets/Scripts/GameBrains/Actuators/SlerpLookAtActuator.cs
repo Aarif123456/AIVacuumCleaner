@@ -14,8 +14,7 @@ namespace GameBrains.Actuators
             if (action is ChangeDirectionAction changeDirectionAction)
             {
                 Transform agentTransform = Agent.transform;
-                float satisfactionAngle
-                    = Mathf.Min(changeDirectionAction.desiredSatisfactionAngle, minimumSatisfactionAngle);
+                float satisfactionAngle = minimumSatisfactionAngle;
                 float angularSpeed = Mathf.Min(changeDirectionAction.desiredAngularSpeed, maximumAngularSpeed);
                 
                 var angle = Vector3.Angle(agentTransform.forward, changeDirectionAction.desiredDirection);

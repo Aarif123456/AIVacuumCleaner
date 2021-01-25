@@ -6,8 +6,7 @@ namespace GameBrains.Actions
     {
         public Vector3 desiredDirection;
 
-        // TODO: Should these be part of the action or set via a different action
+        // NOTE: we could handle changing direction with the move to position action
         public float desiredAngularSpeed;
-        public float desiredSatisfactionAngle;
     }
 }

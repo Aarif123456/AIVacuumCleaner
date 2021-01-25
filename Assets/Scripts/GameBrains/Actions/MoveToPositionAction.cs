@@ -6,8 +6,9 @@ namespace GameBrains.Actions
     {
         public Vector3 desiredPosition;
 
-        // TODO: Should these parameters be set via this action or another action??
+        /* NOTE: the desired speed is given through the action but the actual speed is dependent
+        * on the actuator
+        */ 
         public float desiredSpeed;
-        public float desiredSatisfactionRadius;
     }
 }

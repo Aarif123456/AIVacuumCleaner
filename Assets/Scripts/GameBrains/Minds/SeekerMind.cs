@@ -77,7 +77,6 @@ namespace GameBrains.Minds
                     {
                         desiredPosition = targetPosition,
                         desiredSpeed = desiredSpeed,
-                        desiredSatisfactionRadius = desiredSatisfactionRadius,
                         completionStatus = CompletionsStates.InProgress,
                         timeToLive = moveTimeToLive
                     };
@@ -94,7 +93,6 @@ namespace GameBrains.Minds
                     {
                         desiredDirection = desiredDirection,
                         desiredAngularSpeed = desiredAngularSpeed,
-                        desiredSatisfactionAngle = desiredSatisfactionAngle,
                         completionStatus = CompletionsStates.InProgress,
                         timeToLive = turnTimeToLive
                     };
@@ -238,7 +236,7 @@ namespace GameBrains.Minds
                     valueIndex = i;
                 }
             }
-            
+
             Debug.Log("valuable targetPos" + targetPositions[valueIndex] );
             if (valueIndex != -1)
             {

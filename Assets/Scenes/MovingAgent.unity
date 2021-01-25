@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 20354172}
   - component: {fileID: 20354176}
   - component: {fileID: 20354175}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Weeble
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 798395660}
   - component: {fileID: 798395661}
   - component: {fileID: 798395662}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Mind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1175947806}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 1215369059}
   - component: {fileID: 1215369062}
   - component: {fileID: 1215369061}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -584,7 +584,7 @@ GameObject:
   - component: {fileID: 3485301429501897379}
   - component: {fileID: 1436070022}
   - component: {fileID: 1436070023}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Actuators
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,6 @@ MonoBehaviour:
   baseSuctionEnergyConsumption: 100
   maxSuctionEnergyConsumption: 200
   maxDirtPerSecond: 220
-  layerMask: -257
 --- !u!1 &1554502822
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +707,7 @@ GameObject:
   - component: {fileID: 1554502823}
   - component: {fileID: 1554502826}
   - component: {fileID: 1554502825}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UniBrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -885,7 +884,7 @@ GameObject:
   - component: {fileID: 1674997316}
   - component: {fileID: 1674997319}
   - component: {fileID: 1674997318}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -965,7 +964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1796943298}
   - component: {fileID: 1796943304}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sensors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875813613}
   - component: {fileID: 1875813614}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AgentOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1066,7 +1065,7 @@ GameObject:
   - component: {fileID: 1998656155}
   - component: {fileID: 1998656158}
   - component: {fileID: 1998656157}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1265,6 +1264,7 @@ MonoBehaviour:
   dirtAccumulationRate: 30
   dirtAccumulationVariance: 1
   currentDirt: 0
+  dirtToClean: 0
   maxDirtLevel: 5000
   resistanceRate: 0
   tileMaterial: {fileID: 0}
@@ -1304,6 +1304,7 @@ MonoBehaviour:
   dirtAccumulationRate: 15
   dirtAccumulationVariance: 1
   currentDirt: 0
+  dirtToClean: 0
   maxDirtLevel: 5000
   resistanceRate: 0
   tileMaterial: {fileID: 0}
@@ -1343,6 +1344,7 @@ MonoBehaviour:
   dirtAccumulationRate: 2
   dirtAccumulationVariance: 1
   currentDirt: 0
+  dirtToClean: 0
   maxDirtLevel: 5000
   resistanceRate: 0
   tileMaterial: {fileID: 0}
@@ -1382,6 +1384,7 @@ MonoBehaviour:
   dirtAccumulationRate: 50
   dirtAccumulationVariance: 0
   currentDirt: 0
+  dirtToClean: 0
   maxDirtLevel: 5000
   resistanceRate: 0
   tileMaterial: {fileID: 0}
@@ -1421,6 +1424,7 @@ MonoBehaviour:
   dirtAccumulationRate: 5
   dirtAccumulationVariance: 0
   currentDirt: 0
+  dirtToClean: 0
   maxDirtLevel: 5000
   resistanceRate: 0
   tileMaterial: {fileID: 0}
@@ -1475,7 +1479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4028963070941943850}
   - component: {fileID: 4580618453222460732}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Criteria1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,7 +1561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7422264015108635600}
   - component: {fileID: 4580618453829256612}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Criteria2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1799,7 +1803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8900262185875971636}
   - component: {fileID: 4580618453877035292}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PerformanceMeasure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1830,7 +1834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8080578489357769185}
   - component: {fileID: 288893203529647393}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Memory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
