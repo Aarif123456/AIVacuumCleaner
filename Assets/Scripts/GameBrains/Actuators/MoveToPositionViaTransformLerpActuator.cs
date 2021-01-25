@@ -21,6 +21,7 @@ namespace GameBrains.Actuators
             base.Start();
         }
 
+        /* NOTE: this actuator does not currently handle gravity */
         public override void Act(Action action)
         {
             if (action is MoveToPositionAction moveToPositionAction)
@@ -32,8 +33,6 @@ namespace GameBrains.Actuators
                 
                 Vector3 desiredPosition = moveToPositionAction.desiredPosition;
                 desiredPosition.y = agentTransformPosition.y;
-                
-                // TODO: handle gravity??
                 
                 if (Vector3.Distance(agentTransformPosition,desiredPosition) <= satisfactionRadius)
                 {

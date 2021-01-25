@@ -49,7 +49,6 @@ namespace GameBrains.Entities.Agents
         public ThinkTypes ThinkType => thinkTypes;
 
         [SerializeField] protected PerformanceMeasure performanceMeasure;
-        // TODO: Make protected and add public accessors
         public virtual PerformanceMeasure PerformanceMeasure
         {
             get => performanceMeasure;
@@ -58,7 +57,6 @@ namespace GameBrains.Entities.Agents
 
         [SerializeField] protected List<Sensor> sensors = new List<Sensor>();
         
-        // TODO: Make protected and add public accessors
         public virtual List<Sensor> Sensors
         {
             get => sensors;
@@ -66,7 +64,6 @@ namespace GameBrains.Entities.Agents
         }
 
         [SerializeField] protected Mind mind;
-        // TODO: Make protected and add public accessors
         public virtual Mind Mind
         {
             get => mind;
@@ -75,7 +72,6 @@ namespace GameBrains.Entities.Agents
 
         [SerializeField] protected List<Actuator> actuators = new List<Actuator>();
 
-        // TODO: Make protected and add public accessors
         public virtual List<Actuator> Actuators
         {
             get => actuators;
@@ -84,7 +80,6 @@ namespace GameBrains.Entities.Agents
 
         [SerializeField] protected Memory memory;
 
-        // TODO: Make protected and add public accessors
         public virtual Memory Memory
         {
             get => memory;

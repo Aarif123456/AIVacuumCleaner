@@ -69,7 +69,7 @@ namespace GameBrains.Minds
             Vector3 agentPosition = agentTransform.position;
             targetPosition = ChooseTargetPosition(percepts);
             
-            // TODO: If Actuator cannot achieve desire this keeps trying endlessly??
+            // NOTE: If Actuator cannot achieve desire it will keeps trying endlessly
             if (Vector3.Distance(agentPosition, targetPosition) > desiredSatisfactionRadius)
             {
                 var moveToPositionAction
@@ -106,7 +106,6 @@ namespace GameBrains.Minds
         {
             switch (Agent.TargetType)
             {
-                // TODO: prioritize targets - for value base on measure
                 case TargetTypes.None:
                     return Agent.transform.position;
                 case TargetTypes.First:
@@ -195,8 +194,7 @@ namespace GameBrains.Minds
             return Agent.transform.position; // no target
         }
 
-        /* TODO: figure out how the bot should select a a valuable target */
-        /* Currently the most dirty is the most valuable */
+        /* NOTE: Currently the most dirty is the most valuable */
         protected Vector3 ChooseValuedTargetPosition(IEnumerable<Percept> percepts)
         {
             var targetValues = new List<float>();
@@ -216,9 +214,9 @@ namespace GameBrains.Minds
                 }
             }
 
-            /* TODO: determine if this is a valid assumption - does this create unnecessary 
-            * coupling?? what can you do to make sure we can target tiles that are more dirty
-            * should we try to combine percepts? 
+            /* NOTE: we are assuming that the cleaning sensor and position sensor will always 
+            * create a related list - This may not always be the case depending on the implementation
+            * TODO: how can we aggregate info from our sensors better?
             */
             if(targetValues.Count != targetPositions.Count){
                 Debug.LogWarning("Number of cleanable location do not match tiles in sensor");

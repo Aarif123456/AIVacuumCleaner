@@ -6,7 +6,6 @@ namespace GameBrains.Actuators
 {
     public class MoveToPositionViaCharacterControllerActuator : Actuator
     {
-        // TODO: Is minimumSatisfactionRadius something that should be settable by an action??
         [SerializeField] protected float minimumSatisfactionRadius = 0.5f;    
         [SerializeField] protected float maximumSpeed = 1f;                    
         [SerializeField] protected CharacterController characterController;

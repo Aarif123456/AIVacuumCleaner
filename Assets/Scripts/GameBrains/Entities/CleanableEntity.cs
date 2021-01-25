@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 namespace GameBrains.Entities
 {
-    public class CleanableEntity : TargetEntity
+    public class CleanableEntity : Entity
     {
 
         public static readonly Color DIRT_COLOR = new Vector4(0.745f, 0.494f, 0.243f);
