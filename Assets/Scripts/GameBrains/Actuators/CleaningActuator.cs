@@ -37,7 +37,7 @@ namespace GameBrains.Actuators
                         var dirtCleaned = hit.collider.gameObject.GetComponent<CleanableEntity>().CleanArea( baseSuctionEfficiency, maxDirtPerSecond * Time.deltaTime, 0);
                         /* TODO: store measures in performance measure */
                     } else{
-                        Debug.LogWarning("Ray cast did not hit tile");
+                        Debug.LogWarning("Ray cast did not hit tile, instead it hit a " + hit.collider.tag);
                     }
                 }
                 else

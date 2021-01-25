@@ -20,7 +20,6 @@ namespace GameBrains.Minds
             * move to target block (Inherit from seekerMind?)
             * pick target block (based on what?)
             * Clean area ()
-            *    
             */
             var actions=base.Think(percepts);
             /* We clean when we have a tile that is dirt and it has certain amount of dirt */
