@@ -30,6 +30,7 @@ namespace GameBrains.Sensors
             {
                 cleanPercept.Cleanable = true;
                 cleanPercept.DirtInArea = cleanableEntity.GetTotalDirt();
+                cleanPercept.Dirtiness = cleanableEntity.GetDirtiness();
             }
 
             return cleanPercept; 

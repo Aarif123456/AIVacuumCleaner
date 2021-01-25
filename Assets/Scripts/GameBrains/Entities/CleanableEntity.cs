@@ -46,7 +46,7 @@ namespace GameBrains.Entities
         public void SetAreaColor(){
             if(tileMaterial != null){
                 // first we turn the amount of dirt percentage into a value
-                float dirtiness = (currentDirt/maxDirtLevel);
+                var dirtiness = GetDirtiness();
                 // Next we darken the color depending on how dirty the tile is
                 float r = Mathf.Min(1f, DIRT_COLOR.r - dirtiness);
                 float g = Mathf.Min(1f, DIRT_COLOR.g - dirtiness);
@@ -60,14 +60,18 @@ namespace GameBrains.Entities
         }
 
         /* clean the area and get the amount of dirt cleaned */
-        public float CleanArea(float percentage, float maxDirtSucked){
-            float dirtCleaned = Mathf.Min( maxDirtSucked, Mathf.Max(0, currentDirt * (percentage-resistanceRate)));
+       public float CleanArea(float percentage, float maxDirtSucked, float minDirtSucked){
+            float dirtCleaned = Mathf.Min( maxDirtSucked, Mathf.Max(minDirtSucked, currentDirt * (percentage-resistanceRate))) ;
             currentDirt-=dirtCleaned;
             return dirtCleaned;
         }
 
         public float GetTotalDirt(){
             return currentDirt;
+        }
+
+        public float GetDirtiness(){
+            return (currentDirt/maxDirtLevel);
         }
     }
 }

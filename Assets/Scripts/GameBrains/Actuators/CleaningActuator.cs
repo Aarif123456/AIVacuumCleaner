@@ -40,7 +40,7 @@ namespace GameBrains.Actuators
                     /* TODO  - clean till area clean - and go to turbo if performances increases */
                     Debug.DrawRay(agentPos, agentTransform.TransformDirection(Vector3.down) * hit.distance, Color.yellow);
                     if(hit.collider.tag == "Tile"){
-                        var dirtCleaned = hit.collider.gameObject.GetComponent<CleanableEntity>().CleanArea( baseSuctionEfficiency, maxDirtPerSecond * Time.deltaTime);
+                        var dirtCleaned = hit.collider.gameObject.GetComponent<CleanableEntity>().CleanArea( baseSuctionEfficiency, maxDirtPerSecond * Time.deltaTime, 0);
                         /* TODO: store measures in performance measure */
                     }
                 }

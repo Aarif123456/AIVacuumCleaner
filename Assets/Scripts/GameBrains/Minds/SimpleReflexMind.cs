@@ -30,8 +30,8 @@ namespace GameBrains.Minds
                 var cleanAction
                     = new CleanAction
                     {
-                        cleaningEfficiency = desiredCleaningEfficiency,
-                        desiredCleanliness = desiredSatisfactionRadius,
+                        cleaningEfficiency = this.desiredCleaningEfficiency,
+                        desiredCleanliness = this.desiredCleanliness,
                         completionStatus = CompletionsStates.InProgress,
                         timeToLive = moveTimeToLive*10
                     };

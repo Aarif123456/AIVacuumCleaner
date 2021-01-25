@@ -6,6 +6,8 @@ namespace GameBrains.PerformanceMeasures
     public class PerformanceMeasure : MonoBehaviour
     {
         [SerializeField] protected Agent agent;
+        [SerializeField] protected float dirtSucked = 0f;
+        [SerializeField] protected float energyUsed = 0f;
         protected virtual Agent Agent => agent;
 
         protected virtual void Awake()
