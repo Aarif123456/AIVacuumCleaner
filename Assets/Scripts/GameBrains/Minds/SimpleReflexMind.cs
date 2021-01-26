@@ -40,9 +40,10 @@ namespace GameBrains.Minds
         protected virtual bool ChooseCleanTile(IEnumerable<Percept> percepts) {
             foreach (Percept percept in percepts)
             {
-                if (percept is CleanPercept cleanPercept)
+                if (percept is CleanPercept cleanPercept
+                    && cleanPercept.Cleanable)
                 {
-                    return cleanPercept.Cleanable;
+                    return true;
                 }
             }
 

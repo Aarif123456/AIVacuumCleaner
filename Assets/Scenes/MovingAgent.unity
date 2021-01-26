@@ -696,6 +696,8 @@ MonoBehaviour:
   baseSuctionEnergyConsumption: 100
   maxSuctionEnergyConsumption: 200
   maxDirtPerSecond: 220
+  minDirtPerSecond: 0
+  turbo: 0
 --- !u!1 &1554502822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motorType: 3
   targetType: 3
-  thinkTypes: 1
+  thinkTypes: 0
   performanceMeasure: {fileID: 0}
   sensors: []
   mind: {fileID: 0}
@@ -1260,7 +1262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
   dirtAccumulationRate: 30
   dirtAccumulationVariance: 1
   currentDirt: 0
@@ -1300,7 +1301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
   dirtAccumulationRate: 15
   dirtAccumulationVariance: 1
   currentDirt: 0
@@ -1340,7 +1340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
   dirtAccumulationRate: 2
   dirtAccumulationVariance: 1
   currentDirt: 0
@@ -1380,7 +1379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
   dirtAccumulationRate: 50
   dirtAccumulationVariance: 0
   currentDirt: 0
@@ -1420,8 +1418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1d9666248f5064f876993f6113b7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
-  dirtAccumulationRate: 5
+  dirtAccumulationRate: 50
   dirtAccumulationVariance: 0
   currentDirt: 0
   dirtToClean: 0
