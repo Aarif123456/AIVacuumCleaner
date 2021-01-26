@@ -8,6 +8,8 @@ namespace GameBrains.PerformanceMeasures
         [SerializeField] protected Agent agent;
         [SerializeField] protected float dirtSucked = 0f;
         [SerializeField] protected float energyUsed = 0f;
+        [SerializeField] public float currentEfficiency = 0f;
+
         protected virtual Agent Agent => agent;
 
         protected virtual void Awake()
@@ -21,7 +23,16 @@ namespace GameBrains.PerformanceMeasures
             }
         }
 
-        // TODO: Measure Performance
-        /*TODO: Measure dirt collected, energy used, */
+        protected virtual void Update(){
+            if(energyUsed>0f){
+                currentEfficiency = dirtSucked/energyUsed;
+            }
+            Debug.Log("Current Efficiency " + currentEfficiency);
+        }
+
+        public void AddSuction(float dirt, float energy){
+            dirtSucked += dirt;
+            energyUsed += energy;
+        }
     }
 }

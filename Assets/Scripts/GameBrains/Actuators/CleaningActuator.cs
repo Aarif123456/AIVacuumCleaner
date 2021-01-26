@@ -90,6 +90,7 @@ namespace GameBrains.Actuators
             }
             /* Dirtiness level before cleaning */
             var dirtCleaned = area.CleanArea( suctionRate, maxDirtPerSecond, minDirtPerSecond );
+            Agent.PerformanceMeasure.AddSuction(dirtCleaned, energyConsumptionRate);
             Debug.Log("dirt cleaned" + dirtCleaned);
             return dirtCleaned;
         }

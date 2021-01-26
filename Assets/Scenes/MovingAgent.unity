@@ -691,10 +691,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  baseSuctionEfficiency: 0.25
-  maxSuctionEfficiency: 0.4
+  baseSuctionEfficiency: 0.35
+  maxSuctionEfficiency: 0.6
   baseSuctionEnergyConsumption: 100
-  maxSuctionEnergyConsumption: 200
+  maxSuctionEnergyConsumption: 300
   maxDirtPerSecond: 220
   minDirtPerSecond: 0
   turbo: 0
@@ -1051,7 +1051,7 @@ MonoBehaviour:
   motorType: 3
   targetType: 3
   thinkTypes: 0
-  performanceMeasure: {fileID: 0}
+  performanceMeasure: {fileID: 4580618453877035292}
   sensors: []
   mind: {fileID: 0}
   actuators: []
@@ -1306,7 +1306,7 @@ MonoBehaviour:
   currentDirt: 0
   dirtToClean: 0
   maxDirtLevel: 5000
-  resistanceRate: 0
+  resistanceRate: 0.4
   tileMaterial: {fileID: 0}
 --- !u!1 &217088233760565603
 GameObject:
@@ -1790,6 +1790,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   dirtSucked: 0
   energyUsed: 0
+  currentEfficiency: 0
 --- !u!1 &5346450847767350007
 GameObject:
   m_ObjectHideFlags: 0
